@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+exit(1) if __FILE__ != $0
+
+$LOAD_PATH.unshift('lib', 'test')
+
+fast_tests = `find ./test -name *_test.rb -print | xargs grep -l "test_helper"`
+Dir.glob(fast_tests.split("\n")) { |f| puts f; require f }
+
